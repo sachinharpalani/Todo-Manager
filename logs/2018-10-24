@@ -1,0 +1,24 @@
+10:59:58 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:00:20 - TrackingApp - INFO - AnonymousUser logged in
+11:00:20 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:00:21 - TrackingApp - INFO - deepak@coverfox.in has visited todo:add page
+11:00:27 - TrackingApp - INFO - deepak@coverfox.in added Todo:
+11:00:27 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:00:34 - TrackingApp - INFO - deepak@coverfox.in  completed Todo:
+11:00:34 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:06:21 - TrackingApp - INFO - deepak@coverfox.in has visited todo:add page
+11:06:28 - TrackingApp - INFO - deepak@coverfox.in added Todo:
+11:06:28 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:08:04 - TrackingApp - INFO - deepak@coverfox.in has visited todo:add page
+11:08:22 - TrackingApp - INFO - deepak@coverfox.in added Todo:this will log
+11:08:22 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:09:02 - TrackingApp - INFO - deepak@coverfox.in has visited todo:edit page
+11:09:10 - TrackingApp - INFO - deepak@coverfox.in edited Todo:edited
+11:09:10 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:12:40 - TrackingApp - INFO - deepak@coverfox.in  completed Todo:
+11:12:40 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:12:40 - TrackingApp - INFO - deepak@coverfox.in  completed Todo:
+11:12:40 - TrackingApp - INFO - deepak@coverfox.in has visited home page
+11:14:31 - TrackingApp - INFO - deepak@coverfox.in has visited todo:add page
+11:14:35 - TrackingApp - INFO - deepak@coverfox.in added a Todo
+11:14:35 - TrackingApp - INFO - deepak@coverfox.in has visited home page
