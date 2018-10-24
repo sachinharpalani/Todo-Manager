@@ -7,5 +7,5 @@ urlpatterns = [
     path('register', registration, name='register'),
     path('login', login, name='login'),
     path('logout', logout, name='logout'),
-    path('approve', approve_account, name='approve'),
+    path('approve/<int:user_id>', approve_account, name='approve'),
 ]

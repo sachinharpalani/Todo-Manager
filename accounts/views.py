@@ -60,10 +60,8 @@ def logout(request):
     return redirect(reverse('todos:home'))
 
 
-def approve_account(request):
+def approve_account(request, user_id):
     if request.method == 'POST':
-        print(request.POST.get('user_id'))
-        user_id = request.POST.get('user_id')
         my_user = get_object_or_404(MyUser, pk=user_id)
         my_user.is_approved = True
         my_user.save()
