@@ -1,0 +1,8 @@
+<h2>Login</h2>
+<h3>Dont have account login here :</h3>
+<input type="button" onclick="window.location='{% url 'accounts:register' %}'" value="Register">
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>

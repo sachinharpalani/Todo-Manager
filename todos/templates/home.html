@@ -1,0 +1,67 @@
+<h2> Welcome to Todo-Manager </h2>
+
+<input type="button" onclick="window.location='{% url 'accounts:logout' %}';" value="Logout">
+
+{% if unapproved_users and my_user.is_admin%}
+<h3> Unapproved Users: </h3>
+{% for user in unapproved_users %}
+<form action="{% url 'accounts:approve' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="user_id" value="{{ user.id}}">
+    <p> {{ user.user.email }}</p>
+    <input type="submit" value="Approve">
+</form>
+{% endfor %}nnn
+{% endif %}
+
+<input type="button" onclick="window.location='{% url 'todos:add' %}';" value="Add Todo">
+
+<h2>Pending Todos</h2>
+{% if pending_todos %}
+{% for todo in pending_todos %}
+<div style="display:flex">
+    {% if my_user.is_admin %}
+    <p>{{todo.content}} | {{ todo.assigned_to.user.email }}</p>
+    {% else %}
+    <p>{{todo.content}}</p>
+    {% endif %}
+    {% if my_user == todo.assigned_to %}
+    <input type="button" value="Edit" onclick="window.location='{% url 'todos:edit' todo_id=todo.id %}';">
+      <form action="{% url 'todos:complete' todo_id=todo.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Completed">
+      </form>
+      <form action="{% url 'todos:delete' todo_id=todo.id %}">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+      </form>
+     {% endif %}
+</div>
+{% endfor %}
+
+{% else %}
+<p> No pending todos </p>
+{% endif %}
+
+<h2>Completed Todos</h2>
+{% if completed_todos %}
+{% for todo in completed_todos %}
+<div style="display:flex">
+{% if my_user.is_admin %}
+<p>{{todo.content}} | {{ todo.assigned_to.user.email }}</p>
+{% else %}
+<p>{{todo.content}}</p>
+{% endif %}
+</div>
+{% endfor %}
+{% else %}
+<p> No completed todos </p>
+{% endif %}
+
+
+<h2> Created Todos </h2>
+{% if created_todos %}
+{% for todo in created_todos %}
+<p>{{ todo.content }} -> {{ todo.assigned_to }}</p>
+{% endfor %}
+{% endif %}
