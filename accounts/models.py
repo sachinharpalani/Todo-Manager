@@ -4,20 +4,15 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class Domain(models.Model):
+    name = models.CharField(max_length=50, default='')
+
+
 class MyUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
-
-    @property
-    def domain(self):
-        domain_name = self.user.email.split('@')[1]
-        return domain_name
+    domain = models.ForeignKey(Domain, on_delete=models.PROTECT)
 
     def __str__(self):
         return self.user.username
-
-
-class Team(models.Model):
-    domain = models.CharField(max_length=50)
-    members = models.ManyToManyField(MyUser)

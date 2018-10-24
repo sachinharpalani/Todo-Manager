@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from accounts.models import MyUser, Team
+from accounts.models import MyUser, Domain
 from todos.models import Todo
 from django.contrib.auth.decorators import login_required
 from todos.forms import TodoForm
@@ -13,8 +13,7 @@ def home(request):
     my_user = get_object_or_404(MyUser, user=request.user)
     if my_user.is_approved:
         if my_user.is_admin:
-            unapproved_users = [user for user in Team.objects.get(domain=my_user.domain).members.all()
-                                if not user.is_approved]
+            unapproved_users = MyUser.objects.filter(domain=my_user.domain, is_approved=False)
             pending_todos = [todo for todo in Todo.objects.filter(is_completed=False, is_active=True)
                              if todo.assigned_to.domain == my_user.domain]
             completed_todos = [todo for todo in Todo.objects.filter(is_completed=True, is_active=True)
@@ -49,8 +48,8 @@ def add_todo(request):
             return redirect(reverse('todos:home'))
 
     else:
-        same_team_members = Team.objects.get(domain=my_user.domain).members.all()
-        TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=same_team_members)
+        domain_members = MyUser.objects.filter(domain=my_user.domain)
+        TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=domain_members)
         form = TodoForm()
 
     return render(request, 'add_todo.html', {'form': form})
