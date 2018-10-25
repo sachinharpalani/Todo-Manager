@@ -1,0 +1,35 @@
+{% extends 'todos/base.html' %}
+{% block content %}
+<script>
+ $(document).ready(function(){
+     $('select').formSelect();
+ });
+
+</script>
+<main>
+    <center>
+        <div class="section"></div>
+
+        <h5 class="indigo-text">Add a task</h5>
+        <div class="section"></div>
+
+        <div class="container">
+            <div class="z-depth-1 <grey></grey> lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+                <form class="col s12" method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <center>
+                        <br>
+                        <div class='row'>
+                            <button class='btn btn-large waves-effect red' onclick="{% url 'todos:home' %}">Cancel</button>
+                            <button class="btn btn-large waves-effect waves-light" type="submit" name="action">Update
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </center>
+                </form>
+            </div>
+        </div>
+    </center>
+    {% endblock %}

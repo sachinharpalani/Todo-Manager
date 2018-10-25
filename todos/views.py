@@ -26,14 +26,14 @@ def home(request):
 
         created_todos = Todo.objects.filter(assigned_by=my_user, is_active=True)
 
-        return render(request, 'home.html',
+        return render(request, 'todos/home.html',
                       {'unapproved_users': unapproved_users,
                        'my_user': my_user,
                        'completed_todos': completed_todos,
                        'pending_todos': pending_todos,
                        'created_todos': created_todos})
     else:
-        return render(request, 'unapproved_user.html')
+        return render(request, 'accounts/unapproved_user.html')
 
 
 @login_required
@@ -52,7 +52,7 @@ def add_todo(request):
         TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=domain_members)
         form = TodoForm()
 
-    return render(request, 'add_todo.html', {'form': form})
+    return render(request, 'todos/add_todo.html', {'form': form, 'my_user': my_user})
 
 
 @login_required
@@ -88,4 +88,4 @@ def edit_todo(request, todo_id):
     else:
         form = TodoForm(instance=todo)
 
-    return render(request, 'edit_todo.html', {'form': form})
+        return render(request, 'todos/edit_todo.html', {'form': form})

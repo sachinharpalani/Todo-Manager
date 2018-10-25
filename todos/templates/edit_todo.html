@@ -1,8 +1,0 @@
-<h2>Edit Todo</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="button" value="Back" onclick="window.location='{% url 'todos:home' %}';">
-    <button type="submit">Update</button>
-
-</form>

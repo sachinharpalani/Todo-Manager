@@ -18,7 +18,7 @@ def registration(request):
                 user.save()
             except IntegrityError:
                 form.add_error('email', 'Email already exists!')
-                return render(request, 'register.html', {'form': form})
+                return render(request, 'accounts/register.html', {'form': form})
 
             _domain = user.email.split('@')[1]
             domain_team, is_first_user = Domain.objects.get_or_create(name=_domain)
@@ -33,7 +33,7 @@ def registration(request):
     else:
         form = RegisterUserForm()
 
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 
 def login(request):
@@ -48,11 +48,11 @@ def login(request):
                 return redirect(LOGIN_REDIRECT_URL)
             else:
                 form.add_error('password', 'Wrong Email/ Password combination')
-                return render(request, 'login.html', {'form': form})
+                return render(request, 'accounts/login.html', {'form': form})
     else:
         form = LoginUserForm()
 
-        return render(request, 'login.html', {'form': form})
+        return render(request, 'accounts/login.html', {'form': form})
 
 
 def logout(request):

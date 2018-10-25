@@ -20,9 +20,8 @@ def generate_log_message(user, url):
 
 def log_event(request):
     if request.method == 'POST':
-        print(request.POST)
         url = request.path.split('/')[-1]
-        message = routes_map.get(url,'').format(user=request.user)
+        message = routes_map.get(url, '').format(user=request.user)
     else:
         message = generate_log_message(request.user, request.path)
 

@@ -1,0 +1,59 @@
+<html>
+
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Compiled and minified JavaScript -->
+        <script
+			      src="https://code.jquery.com/jquery-3.3.1.min.js"
+			      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			      crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <style>
+         body {
+             background: #fff;
+         }
+
+         .wholeBody{
+             margin:auto;
+             width: 80%;
+         }
+
+        </style>
+    </head>
+    <body>
+        <script>
+         $(document).ready(function(){
+             $('.sidenav').sidenav();
+         });
+        </script>
+        <!-- Nav bar: https://materializecss.com/navbar.html -->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="{% url 'todos:home' %}" class="brand-logo">{{ my_user.domain.name }}</a>
+                <a href="#"  data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <!-- <li><a href="sass.html">Unapproved Users</a></li>
+                         <li><a href="sass.html">Pending Todos</a></li>
+                         <li><a href="badges.html">Completed Todos</a></li>
+                         <li><a href="collapsible.html">Created Todos</a></li> -->
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+
+        <div class="wholeBody">
+            {% block content %} {% endblock %}
+        </div>
+
+    </body>
+
+</html>
