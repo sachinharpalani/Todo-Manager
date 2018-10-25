@@ -13,18 +13,26 @@ def home(request):
     my_user = get_object_or_404(MyUser, user=request.user)
     if my_user.is_approved:
         if my_user.is_admin:
-            unapproved_users = MyUser.objects.filter(domain=my_user.domain, is_approved=False)
-            pending_todos = [todo for todo in Todo.objects.filter(is_completed=False, is_active=True)
-                             if todo.assigned_to.domain == my_user.domain]
-            completed_todos = [todo for todo in Todo.objects.filter(is_completed=True, is_active=True)
-                               if todo.assigned_to.domain == my_user.domain]
+            unapproved_users = MyUser.objects.filter(domain=my_user.domain,
+                                                     is_approved=False)
+            pending_todos = Todo.objects.filter(is_completed=False,
+                                                is_active=True,
+                                                assigned_to__domain=my_user.domain)
+            completed_todos = Todo.objects.filter(is_completed=True,
+                                                  is_active=True,
+                                                  assigned_to__domain=my_user.domain)
 
         else:
             unapproved_users = []
-            pending_todos = Todo.objects.filter(assigned_to=my_user, is_completed=False, is_active=True)
-            completed_todos = Todo.objects.filter(assigned_to=my_user, is_completed=True, is_active=True)
+            pending_todos = Todo.objects.filter(assigned_to=my_user,
+                                                is_completed=False,
+                                                is_active=True)
+            completed_todos = Todo.objects.filter(assigned_to=my_user,
+                                                  is_completed=True,
+                                                  is_active=True)
 
-        created_todos = Todo.objects.filter(assigned_by=my_user, is_active=True)
+        created_todos = Todo.objects.filter(assigned_by=my_user,
+                                            is_active=True)
 
         return render(request, 'todos/home.html',
                       {'unapproved_users': unapproved_users,
@@ -52,7 +60,8 @@ def add_todo(request):
         TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=domain_members)
         form = TodoForm()
 
-    return render(request, 'todos/add_todo.html', {'form': form, 'my_user': my_user})
+    return render(request, 'todos/add_todo.html',
+                  {'form': form, 'my_user': my_user})
 
 
 @login_required

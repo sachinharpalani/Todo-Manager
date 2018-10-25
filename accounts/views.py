@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from accounts.forms import RegisterUserForm, LoginUserForm
 from TodoManager.settings import LOGIN_REDIRECT_URL
-from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib.auth import authenticate, \
+    login as auth_login, logout as auth_logout
 from accounts.models import MyUser, Domain
 from django.db import IntegrityError
 
@@ -16,7 +17,8 @@ def registration(request):
                 user.save()
             except IntegrityError:
                 form.add_error('email', 'Email already exists!')
-                return render(request, 'accounts/register.html', {'form': form})
+                return render(request, 'accounts/register.html',
+                              {'form': form})
 
             _domain = user.email.split('@')[1]
             domain_team, is_first_user = Domain.objects.get_or_create(name=_domain)
