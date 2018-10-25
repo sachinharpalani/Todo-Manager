@@ -5,8 +5,6 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from accounts.models import MyUser, Domain
 from django.db import IntegrityError
 
-# Create your views here.
-
 
 def registration(request):
     if request.method == 'POST':
