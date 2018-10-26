@@ -14,7 +14,7 @@
 </div>
   <h2> Welcome to Todo-Manager </h2>
 
-{% if my_user.is_admin %}
+{% if profile.is_admin %}
 <h3> Unapproved Users: </h3>
 <ul class="collection">
   {% for user in unapproved_users %}
@@ -70,7 +70,7 @@
 {% endfor %}
 
 {% else %}
-<p> No pending todos </p>
+<h5 style="text-align: center"> No pending todos </h5>
 {% endif %}
 
 <h2>Completed Todos</h2>
@@ -80,7 +80,7 @@
           <tr>
               <th>Sr.No</th>
               <th>Task</th>
-              {% if my_user.is_admin %}
+              {% if profile.is_admin %}
               <th>Assignee</th>
               {% endif %}
           </tr>
@@ -90,15 +90,15 @@
           <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{ todo.content }}</td>
-            {% if my_user.is_admin %}
+            {% if profile.is_admin %}
             <td>{{ todo.assigned_to.user.get_full_name }}</td>
             {% endif %}
           </tr>
-{% endfor %}
+          {% endfor %}
         </tbody>
 </table>
 {% else %}
-<p> No completed todos </p>
+<h5 style="text-align: center"> No completed todos </h5>
 {% endif %}
 
 <h2> Created Todos </h2>
@@ -108,7 +108,7 @@
           <tr>
               <th>Sr.No</th>
               <th>Task</th>
-              {% if my_user.is_admin %}
+              {% if profile.is_admin %}
               <th>Assignee</th>
               {% endif %}
           </tr>
@@ -118,15 +118,15 @@
           <tr>
             <td>{{ forloop.counter }}</td>
             <td>{{ todo.content }}</td>
-            {% if my_user.is_admin %}
+            {% if profile.is_admin %}
             <td>{{ todo.assigned_to.user.get_full_name }}</td>
             {% endif %}
           </tr>
-            {% endfor %}
-</tbody>
+          {% endfor %}
+        </tbody>
 </table>
 {% else %}
-<p> No completed todos </p>
+<h5 style="text-align: center"> No completed todos </h5>
 {% endif %}
 
 {% endblock %}

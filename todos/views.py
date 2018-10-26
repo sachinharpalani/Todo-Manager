@@ -1,42 +1,39 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from accounts.models import MyUser, Domain
+from accounts.models import Profile
 from todos.models import Todo
 from django.contrib.auth.decorators import login_required
 from todos.forms import TodoForm
-from django import forms
-
-# Create your views here.
 
 
 @login_required
 def home(request):
-    my_user = get_object_or_404(MyUser, user=request.user)
-    if my_user.is_approved:
-        if my_user.is_admin:
-            unapproved_users = MyUser.objects.filter(domain=my_user.domain,
+    profile = get_object_or_404(Profile, user=request.user)
+    if profile.is_approved:
+        if profile.is_admin:
+            unapproved_users = Profile.objects.filter(domain=profile.domain,
                                                      is_approved=False)
             pending_todos = Todo.objects.filter(is_completed=False,
                                                 is_active=True,
-                                                assigned_to__domain=my_user.domain)
+                                                assigned_to__domain=profile.domain)
             completed_todos = Todo.objects.filter(is_completed=True,
                                                   is_active=True,
-                                                  assigned_to__domain=my_user.domain)
+                                                  assigned_to__domain=profile.domain)
 
         else:
             unapproved_users = []
-            pending_todos = Todo.objects.filter(assigned_to=my_user,
+            pending_todos = Todo.objects.filter(assigned_to=profile,
                                                 is_completed=False,
                                                 is_active=True)
-            completed_todos = Todo.objects.filter(assigned_to=my_user,
+            completed_todos = Todo.objects.filter(assigned_to=profile,
                                                   is_completed=True,
                                                   is_active=True)
 
-        created_todos = Todo.objects.filter(assigned_by=my_user,
+        created_todos = Todo.objects.filter(assigned_by=profile,
                                             is_active=True)
 
         return render(request, 'todos/home.html',
                       {'unapproved_users': unapproved_users,
-                       'my_user': my_user,
+                       'profile': profile,
                        'completed_todos': completed_todos,
                        'pending_todos': pending_todos,
                        'created_todos': created_todos})
@@ -46,22 +43,24 @@ def home(request):
 
 @login_required
 def add_todo(request):
-    my_user = get_object_or_404(MyUser, user=request.user)
+    profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
-        form = TodoForm(request.POST)
+        form = TodoForm(profile, request.POST)
         if form.is_valid():
             todo_form = form.save(commit=False)
-            todo_form.assigned_by = my_user
+            todo_form.assigned_by = profile
+            todo_form.profile = profile
             todo_form.save()
             return redirect(reverse('todos:home'))
 
     else:
-        domain_members = MyUser.objects.filter(domain=my_user.domain)
-        TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=domain_members)
-        form = TodoForm()
+        # Overiding forms init instead of the below code:
+        # domain_members = MyUser.objects.filter(domain=my_user.domain)
+        # TodoForm.base_fields['assigned_to'] = forms.ModelChoiceField(queryset=domain_members)
+        form = TodoForm(profile)
 
     return render(request, 'todos/add_todo.html',
-                  {'form': form, 'my_user': my_user})
+                  {'form': form, 'profile': profile})
 
 
 @login_required
@@ -84,17 +83,18 @@ def delete_todo(request, todo_id):
 
 @login_required
 def edit_todo(request, todo_id):
-    my_user = get_object_or_404(MyUser, user=request.user)
+    profile = get_object_or_404(Profile, user=request.user)
     todo = get_object_or_404(Todo, id=todo_id)
     if request.method == 'POST':
-        form = TodoForm(request.POST, instance=todo)
+        form = TodoForm(profile, request.POST, instance=todo)
         if form.is_valid():
             todo_form = form.save(commit=False)
-            todo_form.assigned_by = my_user
+            todo_form.assigned_by = profile
+            todo_form.profile = profile
             todo_form.save()
             return redirect(reverse('todos:home'))
 
     else:
-        form = TodoForm(instance=todo)
+        form = TodoForm(profile=profile, instance=todo)
 
         return render(request, 'todos/edit_todo.html', {'form': form})

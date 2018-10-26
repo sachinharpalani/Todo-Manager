@@ -8,7 +8,7 @@ class Domain(models.Model):
     name = models.CharField(max_length=50, default='')
 
 
-class MyUser(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_admin = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
