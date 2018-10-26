@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from accounts.forms import RegisterUserForm, LoginUserForm
-from TodoManager.settings import LOGIN_REDIRECT_URL
+from TodoManager.settings import LOGIN_REDIRECT_URL, EMAIL_HOST_USER
 from django.contrib.auth import authenticate, \
     login as auth_login, logout as auth_logout
 from accounts.models import Profile, Domain
 from django.db import IntegrityError
+from django.core.mail import send_mail
 
 
 def registration(request):
@@ -22,11 +23,15 @@ def registration(request):
 
             _domain = user.email.split('@')[1]
             domain_team, is_first_user = Domain.objects.get_or_create(name=_domain)
-            my_user = Profile.objects.create(user=user, domain=domain_team)
+            profile = Profile.objects.create(user=user, domain=domain_team)
             if is_first_user:
-                my_user.is_admin = True
-                my_user.is_approved = True
-                my_user.save()
+                profile.is_admin = True
+                profile.is_approved = True
+                profile.save()
+            else:
+                admin = Profile.objects.get(domain=profile.domain, is_admin=True)
+                print(admin)
+                send_mail('New Registration', '{} has just registered, please approve his profile'.format(profile.user.get_full_name()), EMAIL_HOST_USER, [admin.user.email])
             auth_login(request, user)
             return redirect(LOGIN_REDIRECT_URL)
 
@@ -60,7 +65,8 @@ def logout(request):
 
 def approve_account(request, user_id):
     if request.method == 'POST':
-        my_user = get_object_or_404(Profile, pk=user_id)
-        my_user.is_approved = True
-        my_user.save()
+        profile = get_object_or_404(Profile, pk=user_id)
+        profile.is_approved = True
+        profile.save()
+        send_mail('Profile Approved', 'Your profile has been approved. Please visit our todo app to start managing your tasks', EMAIL_HOST_USER, [profile.user.email])
         return redirect(reverse('todos:home'))

@@ -38,7 +38,7 @@ def home(request):
                        'pending_todos': pending_todos,
                        'created_todos': created_todos})
     else:
-        return render(request, 'todos/unapproved_user.html')
+        return render(request, 'accounts/unapproved_user.html')
 
 
 @login_required

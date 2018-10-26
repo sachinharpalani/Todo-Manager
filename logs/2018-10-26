@@ -108,3 +108,135 @@
 09:46:01 - TrackingApp - INFO - sachin@coverfox.in has visited home page
 09:52:39 - TrackingApp - INFO - sachin@coverfox.in has visited home page
 09:52:55 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+09:58:45 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:39:27 - TrackingApp - INFO - sachin@coverfox.in has visited todo:add page
+10:40:01 - TrackingApp - INFO - sachin@coverfox.in has visited accounts:logout page
+10:40:01 - TrackingApp - INFO - AnonymousUser has visited home page
+10:40:01 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+10:40:04 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+10:40:27 - TrackingApp - INFO - AnonymousUser has just been registered
+10:40:27 - TrackingApp - INFO - laksh@coverfox.in has visited home page
+10:40:32 - TrackingApp - INFO - laksh@coverfox.in has visited accounts:logout page
+10:40:33 - TrackingApp - INFO - AnonymousUser has visited home page
+10:40:33 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+10:40:38 - TrackingApp - INFO - AnonymousUser logged in
+10:40:38 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:40:42 - TrackingApp - INFO - 
+10:40:42 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:40:49 - TrackingApp - INFO - AnonymousUser has visited home page
+10:40:49 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+10:41:06 - TrackingApp - INFO - AnonymousUser logged in
+10:41:06 - TrackingApp - INFO - laksh@coverfox.in has visited home page
+10:41:11 - TrackingApp - INFO - laksh@coverfox.in has visited todo:add page
+10:41:20 - TrackingApp - INFO - laksh@coverfox.in added a Todo
+10:41:20 - TrackingApp - INFO - laksh@coverfox.in has visited home page
+10:41:27 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:41:40 - TrackingApp - INFO - sachin@coverfox.in has visited todo:edit page
+10:41:46 - TrackingApp - INFO - sachin@coverfox.in edited a Todo
+10:41:46 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:41:50 - TrackingApp - INFO - sachin@coverfox.in  completed an Todo
+10:41:50 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+10:41:58 - TrackingApp - INFO - 
+10:41:58 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+11:06:09 - TrackingApp - INFO - sachin@coverfox.in has visited accounts:logout page
+11:06:09 - TrackingApp - INFO - AnonymousUser has visited home page
+11:06:09 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:06:11 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:06:27 - TrackingApp - INFO - AnonymousUser has just been registered
+11:06:27 - TrackingApp - INFO - test@coverfox.in has visited home page
+11:08:23 - TrackingApp - INFO - test@coverfox.in has visited accounts:logout page
+11:08:23 - TrackingApp - INFO - AnonymousUser has visited home page
+11:08:23 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:08:24 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:08:40 - TrackingApp - INFO - AnonymousUser has just been registered
+11:09:45 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:09:52 - TrackingApp - INFO - AnonymousUser logged in
+11:09:52 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+11:09:55 - TrackingApp - INFO - 
+11:09:55 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+11:10:42 - TrackingApp - INFO - sachin@coverfox.in has visited accounts:logout page
+11:10:42 - TrackingApp - INFO - AnonymousUser has visited home page
+11:10:42 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:10:44 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:11:01 - TrackingApp - INFO - AnonymousUser has just been registered
+11:11:01 - TrackingApp - INFO - asd@coverfox.in has visited home page
+11:11:39 - TrackingApp - INFO - asd@coverfox.in has visited accounts:logout page
+11:11:39 - TrackingApp - INFO - AnonymousUser has visited home page
+11:11:39 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:12:05 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:12:38 - TrackingApp - INFO - AnonymousUser has just been registered
+11:13:08 - TrackingApp - INFO - AnonymousUser has visited admin page
+11:13:08 - TrackingApp - INFO - AnonymousUser has visited admin:login page
+11:13:09 - TrackingApp - INFO - AnonymousUser has visited favicon:ico page
+11:13:10 - TrackingApp - INFO - 
+11:13:38 - TrackingApp - INFO - AnonymousUser has visited admin:login page
+11:13:43 - TrackingApp - INFO - 
+11:13:43 - TrackingApp - INFO - admin has visited admin page
+11:13:45 - TrackingApp - INFO - admin has visited admin:auth:user page
+11:13:45 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:13:56 - TrackingApp - INFO - 
+11:13:57 - TrackingApp - INFO - 
+11:13:57 - TrackingApp - INFO - admin has visited admin:auth:user page
+11:13:57 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:14:11 - TrackingApp - INFO - AnonymousUser has just been registered
+11:14:25 - TrackingApp - INFO - deepak.ace12@gmail.com has visited home page
+11:14:33 - TrackingApp - INFO - deepak.ace12@gmail.com has visited accounts:logout page
+11:14:33 - TrackingApp - INFO - AnonymousUser has visited home page
+11:14:33 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:14:41 - TrackingApp - INFO - AnonymousUser logged in
+11:14:41 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+11:14:45 - TrackingApp - INFO - sachin@coverfox.in has visited home page
+11:14:48 - TrackingApp - INFO - sachin@coverfox.in has visited accounts:logout page
+11:14:48 - TrackingApp - INFO - AnonymousUser has visited home page
+11:14:48 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:14:54 - TrackingApp - INFO - AnonymousUser logged in
+11:14:54 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:15:16 - TrackingApp - INFO - binson@gmail.com has visited accounts:logout page
+11:15:16 - TrackingApp - INFO - AnonymousUser has visited home page
+11:15:16 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:15:19 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:15:37 - TrackingApp - INFO - AnonymousUser has just been registered
+11:15:45 - TrackingApp - INFO - sachinharpalani2@gmail.com has visited home page
+11:16:34 - TrackingApp - INFO - sachinharpalani2@gmail.com has visited accounts:logout page
+11:16:34 - TrackingApp - INFO - AnonymousUser has visited home page
+11:16:34 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:16:38 - TrackingApp - INFO - AnonymousUser logged in
+11:16:39 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:16:45 - TrackingApp - INFO - 
+11:16:49 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:27:33 - TrackingApp - INFO - 
+11:27:33 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:27:35 - TrackingApp - INFO - binson@gmail.com has visited accounts:logout page
+11:27:36 - TrackingApp - INFO - AnonymousUser has visited home page
+11:27:36 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:27:57 - TrackingApp - INFO - admin has visited admin page
+11:28:00 - TrackingApp - INFO - admin has visited admin:accounts:profile page
+11:28:00 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:28:03 - TrackingApp - INFO - admin has visited admin:accounts:profile:change page
+11:28:03 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:28:08 - TrackingApp - INFO - 
+11:28:08 - TrackingApp - INFO - admin has visited admin:accounts:profile page
+11:28:08 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:28:36 - TrackingApp - INFO - AnonymousUser logged in
+11:28:36 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:28:39 - TrackingApp - INFO - 
+11:28:46 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:30:14 - TrackingApp - INFO - binson@gmail.com has visited accounts:logout page
+11:30:14 - TrackingApp - INFO - AnonymousUser has visited home page
+11:30:14 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:30:19 - TrackingApp - INFO - AnonymousUser logged in
+11:30:19 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:30:21 - TrackingApp - INFO - binson@gmail.com has visited todo:add page
+11:30:25 - TrackingApp - INFO - binson@gmail.com added a Todo
+11:30:25 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:30:28 - TrackingApp - INFO - binson@gmail.com  completed an Todo
+11:30:28 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:30:40 - TrackingApp - INFO - admin has visited admin:accounts:profile:change page
+11:30:40 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:30:43 - TrackingApp - INFO - 
+11:30:43 - TrackingApp - INFO - admin has visited admin:accounts:profile page
+11:30:44 - TrackingApp - INFO - admin has visited admin:jsi:n page
+11:31:05 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:31:19 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:31:22 - TrackingApp - INFO - 
+11:31:30 - TrackingApp - INFO - binson@gmail.com has visited home page
