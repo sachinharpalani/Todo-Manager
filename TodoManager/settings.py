@@ -154,6 +154,7 @@ LOGGING = {
     },
 }
 
+# EMAIL
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' if DEBUG else 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -165,3 +166,11 @@ EMAIL_HOST_USER = os.environ.get('TODOMANAGER_EMAIL', '')
 EMAIL_HOST_PASSWORD = os.environ.get('TODOMANAGER_EMAIL_PASSWORD', '')
 
 EMAIL_USE_TLS = True
+
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

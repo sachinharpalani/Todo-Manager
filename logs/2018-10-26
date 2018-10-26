@@ -240,3 +240,16 @@
 11:31:19 - TrackingApp - INFO - binson@gmail.com has visited home page
 11:31:22 - TrackingApp - INFO - 
 11:31:30 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:54:56 - TrackingApp - INFO - binson@gmail.com has visited accounts:logout page
+11:54:56 - TrackingApp - INFO - AnonymousUser has visited home page
+11:54:56 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:54:59 - TrackingApp - INFO - AnonymousUser has visited accounts:register page
+11:55:18 - TrackingApp - INFO - AnonymousUser has just been registered
+11:55:18 - TrackingApp - INFO - abcd@gmail.com has visited home page
+11:55:39 - TrackingApp - INFO - abcd@gmail.com has visited accounts:logout page
+11:55:39 - TrackingApp - INFO - AnonymousUser has visited home page
+11:55:39 - TrackingApp - INFO - AnonymousUser has visited accounts:login page
+11:55:45 - TrackingApp - INFO - AnonymousUser logged in
+11:55:46 - TrackingApp - INFO - binson@gmail.com has visited home page
+11:55:51 - TrackingApp - INFO - 
+11:55:51 - TrackingApp - INFO - binson@gmail.com has visited home page

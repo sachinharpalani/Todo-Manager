@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, \
     login as auth_login, logout as auth_logout
 from accounts.models import Profile, Domain
 from django.db import IntegrityError
-from django.core.mail import send_mail
+from accounts.utils import send_email
 
 
 def registration(request):
@@ -31,7 +31,7 @@ def registration(request):
             else:
                 admin = Profile.objects.get(domain=profile.domain, is_admin=True)
                 print(admin)
-                send_mail('New Registration', '{} has just registered, please approve his profile'.format(profile.user.get_full_name()), EMAIL_HOST_USER, [admin.user.email])
+                send_email('New Registration', '{} has just registered, please approve his profile'.format(profile.user.get_full_name()), EMAIL_HOST_USER, [admin.user.email])
             auth_login(request, user)
             return redirect(LOGIN_REDIRECT_URL)
 
@@ -68,5 +68,5 @@ def approve_account(request, user_id):
         profile = get_object_or_404(Profile, pk=user_id)
         profile.is_approved = True
         profile.save()
-        send_mail('Profile Approved', 'Your profile has been approved. Please visit our todo app to start managing your tasks', EMAIL_HOST_USER, [profile.user.email])
+        send_email('Profile Approved', 'Your profile has been approved. Please visit our todo app to start managing your tasks', EMAIL_HOST_USER, [profile.user.email])
         return redirect(reverse('todos:home'))
