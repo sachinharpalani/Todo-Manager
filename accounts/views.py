@@ -30,14 +30,13 @@ def registration(request):
                 profile.save()
             else:
                 admin = Profile.objects.get(domain=profile.domain, is_admin=True)
-                print(admin)
                 send_email.delay('New Registration', '{} has just registered, please approve his profile'.format(profile.user.get_full_name()), EMAIL_HOST_USER, [admin.user.email])
             auth_login(request, user)
             return redirect(LOGIN_REDIRECT_URL)
 
     else:
         form = RegisterUserForm()
-        return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
 
 
 def login(request):
@@ -55,11 +54,12 @@ def login(request):
                 return render(request, 'accounts/login.html', {'form': form})
     else:
         form = LoginUserForm()
-        return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
 
 
 def logout(request):
     auth_logout(request)
+    request.session.flush()
     return redirect(reverse('todos:home'))
 
 
