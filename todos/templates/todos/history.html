@@ -1,0 +1,26 @@
+{% extends 'todos/base.html' %}
+{% block content %}
+<br>
+<div style="display:flex; justify-content: space-around; align-items: between">
+    <a class="waves-effect blue-grey btn-large" href="?todo_type=pending">Pending Todos</a>
+    <a class="waves-effect green btn-large" href="?todo_type=completed">Completed Todos</a>
+    <a class="waves-effect teal btn-large" href="?todo_type=created">Todos Created By Me</a>
+</div>
+<br>
+<div class="row" style="display: flex; align-content: space-between; justify-content: space-around; flex-flow: row wrap">
+{% for todo in todos %}
+    <div style="width: 30%">
+        <div class="card {{ color }} darken-1">
+            <div class="card-content white-text">
+                <span class="card-title">
+                    <p class="left">Task {{ forloop.counter }} </p>
+                    <p class="right">{{ todo.assigned_to.user.get_full_name }}</p><br>
+                </span>
+                <p>{{ todo.content }}</p>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

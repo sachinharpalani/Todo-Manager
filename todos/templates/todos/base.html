@@ -31,23 +31,20 @@
         <!-- Nav bar: https://materializecss.com/navbar.html -->
         <nav>
             <div class="nav-wrapper">
-                <a href="{% url 'todos:home' %}" class="brand-logo">{{ profile.domain.name }}</a>
+                <a href="{% url 'todos:home' %}" class="brand-logo center">{{ profile.domain.name }}</a>
                 <a href="#"  data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">
-                    <!-- <li><a href="sass.html">Unapproved Users</a></li>
-                         <li><a href="sass.html">Pending Todos</a></li>
-                         <li><a href="badges.html">Completed Todos</a></li>
-                         <li><a href="collapsible.html">Created Todos</a></li> -->
+                    <li><a href="{% url 'todos:home' %}">Home</a></li>
+                    <li><a href="{% url 'todos:history' %}">History</a></li>
                     <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
                 </ul>
             </div>
         </nav>
 
         <ul class="sidenav" id="mobile-demo">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">Javascript</a></li>
-            <li><a href="mobile.html">Mobile</a></li>
+            <li><a href="{% url 'todos:home' %}">Home</a></li>
+            <li><a href="{% url 'todos:history' %}">History</a></li>
+            <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
         </ul>
 
         <div class="wholeBody">

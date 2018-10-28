@@ -5,32 +5,88 @@
  h2, h3{
      text-align:center
  }
-</style>
+ #clockdiv{
+     font-family: sans-serif;
+     color: #fff;
+     display: inline-block;
+     font-weight: 100;
+     text-align: center;
+     font-size: 50px;
+ }
 
+ #clockdiv > div{
+     padding: 10px;
+     border-radius: 3px;
+     background: #00BF96;
+     display: inline-block;
+ }
+
+ #clockdiv div > span{
+     padding: 15px;
+     border-radius: 3px;
+     background: #00816A;
+     display: inline-block;
+ }
+ .smalltext{
+     padding-top: 5px;
+     font-size: 16px;
+ }
+ body{
+     text-align: center;
+     background: #ffffff;
+     font-family: sans-serif;
+     font-weight: 100;
+ }
+</style>
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large red" href="{% url 'todos:add' %}">
     <i class="large material-icons">add</i>
   </a>
 </div>
-  <h2> Welcome to Todo-Manager </h2>
+<h2> Welcome, {{ profile.user.get_full_name }}</h2>
+<body>
+{% if profile.is_admin %}
+<div id="clockdiv">
+    <div>
+        <span class="days">{{ users_count }}</span>
+        <div class="smalltext">Users</div>
+    </div>
+    <div>
+        <span class="hours">{{ todos_count }}</span>
+        <div class="smalltext">Todos</div>
+    </div>
+    <div>
+        <span class="minutes">{{ pending_count }}</span>
+        <div class="smalltext">Pending</div>
+    </div>
+    <div>
+        <span class="seconds">{{ completed_count }}</span>
+        <div class="smalltext">Completed</div>
+    </div>
+</div>
+{% endif %}
 
 {% if profile.is_admin %}
-<h3> Unapproved Users: </h3>
-<ul class="collection">
-  {% for user in unapproved_users %}
-    <li class="collection-item avatar">
-      <img src="https://ukla.org/images/icons/user-icon.svg" alt="" class="circle">
-      <span class="title">{{ user.user.get_full_name }}</span>
-      <p>{{ user.user.email }}</p>
-      <form action="{% url 'accounts:approve' user_id=user.id %}" method="post" style="margin-right: 10px">
+  <h3> Unapproved Users: </h3>
+  {% if unapproved_users %}
+  <ul class="collection">
+      {% for user in unapproved_users %}
+      <li class="collection-item avatar">
+          <img src="https://ukla.org/images/icons/user-icon.svg" alt="" class="circle">
+          <span class="title">{{ user.user.get_full_name }}</span>
+          <p>{{ user.user.email }}</p>
+          <form action="{% url 'accounts:approve' user_id=user.id %}" method="post" style="margin-right: 10px">
               {% csrf_token %}
               <button type="submit" class="right btn-floating btn-large pulse secondary-content">
-                <i class="large material-icons">group_add</i>
+                  <i class="large material-icons">group_add</i>
               </button>
-      </form>
-    </li>
-  {% endfor %}
-</ul>
+          </form>
+      </li>
+      {% endfor %}
+  </ul>
+  {% else %}
+  <h5 class="center"> No pending approvals </h3>
+  {% endif %}
 {% endif %}
 
 <h2>Pending Todos</h2>
@@ -42,7 +98,7 @@
         <div class="card-content white-text">
           <span class="card-title">
             <p class="left">Task {{ forloop.counter }} </p>
-            <p class="right">{{ todo.assigned_to }}</p><br>
+            <p class="right">{{ todo.assigned_to.user.get_full_name }}</p><br>
           </span>
           <p>{{ todo.content }}</p>
           <div class="card-action" style="display: flex;">
@@ -51,11 +107,11 @@
           </a>
           <form action="{% url 'todos:complete' todo_id=todo.id %}" method="post" style="margin-right: 10px">
               {% csrf_token %}
-              <button type="submit" class="btn-floating btn-large red">
+              <button type="submit" class="left btn-floating btn-large red">
                 <i class="large material-icons">done</i>
               </button>
           </form>
-          <form action="{% url 'todos:delete' todo_id=todo.id %}" method="post" style="margin-left: 300px">
+          <form action="{% url 'todos:delete' todo_id=todo.id %}" method="post" style="margin-left: 70%">
               {% csrf_token %}
               <button type="submit" class="right btn-floating btn-large red">
                 <i class="large material-icons">delete</i>
@@ -73,60 +129,6 @@
 <h5 style="text-align: center"> No pending todos </h5>
 {% endif %}
 
-<h2>Completed Todos</h2>
-{% if completed_todos %}
-<table>
-        <thead>
-          <tr>
-              <th>Sr.No</th>
-              <th>Task</th>
-              {% if profile.is_admin %}
-              <th>Assignee</th>
-              {% endif %}
-          </tr>
-        </thead>
-        <tbody>
-{% for todo in completed_todos %}
-          <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ todo.content }}</td>
-            {% if profile.is_admin %}
-            <td>{{ todo.assigned_to.user.get_full_name }}</td>
-            {% endif %}
-          </tr>
-          {% endfor %}
-        </tbody>
-</table>
-{% else %}
-<h5 style="text-align: center"> No completed todos </h5>
-{% endif %}
-
-<h2> Created Todos </h2>
-{% if created_todos %}
-<table class="center">
-        <thead>
-          <tr>
-              <th>Sr.No</th>
-              <th>Task</th>
-              {% if profile.is_admin %}
-              <th>Assignee</th>
-              {% endif %}
-          </tr>
-        </thead>
-        <tbody>
-          {% for todo in created_todos %}
-          <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ todo.content }}</td>
-            {% if profile.is_admin %}
-            <td>{{ todo.assigned_to.user.get_full_name }}</td>
-            {% endif %}
-          </tr>
-          {% endfor %}
-        </tbody>
-</table>
-{% else %}
-<h5 style="text-align: center"> No completed todos </h5>
-{% endif %}
+</body>
 
 {% endblock %}
