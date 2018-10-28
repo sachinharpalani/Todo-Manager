@@ -142,7 +142,7 @@ LOGGING = {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
             'formatter': 'default',
-            'filename': os.path.join(BASE_DIR, 'logs', str(datetime.date.today())),
+            'filename': os.path.join(BASE_DIR, 'logs', '{}.log'.format(str(datetime.date.today()))),
         },
     },
     'loggers': {

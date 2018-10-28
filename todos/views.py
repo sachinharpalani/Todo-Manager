@@ -109,7 +109,7 @@ def history(request):
     todo_type = request.GET.get('todo_type', 'pending')
     kwargs = {'assigned_to__domain': profile.domain} if profile.is_admin else {'assigned_to': profile}
     if todo_type == 'pending':
-        color = 'blue-grey'
+        color = 'yellow darken-3'
         all_todos = Todo.objects.filter(is_completed=False, is_active=True, **kwargs)
     elif todo_type == 'completed':
         color = 'green'
