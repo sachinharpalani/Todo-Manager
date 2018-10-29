@@ -2,49 +2,47 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 from accounts.models import Profile
 from todos.models import Todo
 from django.contrib.auth.decorators import login_required
+from todos.decorators import approval_required
 from todos.forms import TodoForm
 
 
 @login_required
+@approval_required
 def home(request):
     profile = get_object_or_404(Profile, user=request.user)
-    if profile.is_approved:
-        if profile.is_admin:
-            unapproved_users = Profile.objects.filter(domain=profile.domain,
-                                                     is_approved=False)
-            pending_todos = Todo.objects.filter(is_completed=False,
-                                                is_active=True,
-                                                assigned_to__domain=profile.domain)
-            pending_count = len(pending_todos)
-            completed_count = Todo.objects.filter(is_completed=True,
-                                                  is_active=True,
-                                                  assigned_to__domain=profile.domain).count()
-
-            todos_count = Todo.objects.filter(is_active=True,
+    if profile.is_admin:
+        unapproved_users = Profile.objects.filter(domain=profile.domain,
+                                                  is_approved=False)
+        pending_todos = Todo.objects.filter(is_completed=False,
+                                            is_active=True,
+                                            assigned_to__domain=profile.domain)
+        pending_count = len(pending_todos)
+        completed_count = Todo.objects.filter(is_completed=True,
+                                              is_active=True,
                                               assigned_to__domain=profile.domain).count()
 
-            users_count = Profile.objects.filter(domain=profile.domain).count()
+        todos_count = Todo.objects.filter(is_active=True,
+                                          assigned_to__domain=profile.domain).count()
 
-        else:
-            pending_todos = Todo.objects.filter(assigned_to=profile,
-                                                is_completed=False,
-                                                is_active=True)
-
-            pending_count=unapproved_users=completed_count=todos_count=users_count=0
-
-        return render(request, 'todos/home.html',
-                      {'unapproved_users': unapproved_users,
-                       'profile': profile,
-                       'completed_count': completed_count,
-                       'pending_todos': pending_todos,
-                       'pending_count': pending_count,
-                       'todos_count': todos_count,
-                       'users_count': users_count})
+        users_count = Profile.objects.filter(domain=profile.domain).count()
     else:
-        return render(request, 'accounts/unapproved_user.html')
+        pending_todos = Todo.objects.filter(assigned_to=profile,
+                                            is_completed=False,
+                                            is_active=True)
+        pending_count = unapproved_users = completed_count = todos_count = users_count = 0
+
+    return render(request, 'todos/home.html',
+                  {'unapproved_users': unapproved_users,
+                   'profile': profile,
+                   'completed_count': completed_count,
+                   'pending_todos': pending_todos,
+                   'pending_count': pending_count,
+                   'todos_count': todos_count,
+                   'users_count': users_count})
 
 
 @login_required
+@approval_required
 def add_todo(request):
     profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
@@ -67,6 +65,7 @@ def add_todo(request):
 
 
 @login_required
+@approval_required
 def complete_todo(request, todo_id):
     if request.method == 'POST':
         todo = get_object_or_404(Todo, id=todo_id)
@@ -76,6 +75,7 @@ def complete_todo(request, todo_id):
 
 
 @login_required
+@approval_required
 def delete_todo(request, todo_id):
     if request.method == 'POST':
         todo = get_object_or_404(Todo, id=todo_id)
@@ -85,6 +85,7 @@ def delete_todo(request, todo_id):
 
 
 @login_required
+@approval_required
 def edit_todo(request, todo_id):
     profile = get_object_or_404(Profile, user=request.user)
     todo = get_object_or_404(Todo, id=todo_id)
@@ -104,6 +105,7 @@ def edit_todo(request, todo_id):
 
 
 @login_required
+@approval_required
 def history(request):
     profile = get_object_or_404(Profile, user=request.user)
     todo_type = request.GET.get('todo_type', 'pending')

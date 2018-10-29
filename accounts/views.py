@@ -40,21 +40,24 @@ def registration(request):
 
 
 def login(request):
-    if request.method == 'POST':
-        form = LoginUserForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=email, password=password)
-            if user is not None:
-                auth_login(request, user)
-                return redirect(LOGIN_REDIRECT_URL)
-            else:
-                form.add_error('password', 'Wrong Email/ Password combination')
-                return render(request, 'accounts/login.html', {'form': form})
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = LoginUserForm(request.POST)
+            if form.is_valid():
+                email = form.cleaned_data.get('email')
+                password = form.cleaned_data.get('password')
+                user = authenticate(request, username=email, password=password)
+                if user is not None:
+                    auth_login(request, user)
+                    return redirect(LOGIN_REDIRECT_URL)
+                else:
+                    form.add_error('password', 'Wrong Email/ Password combination')
+                    return render(request, 'accounts/login.html', {'form': form})
+        else:
+            form = LoginUserForm()
+        return render(request, 'accounts/login.html', {'form': form})
     else:
-        form = LoginUserForm()
-    return render(request, 'accounts/login.html', {'form': form})
+        return redirect(reverse('todos:home'))
 
 
 def logout(request):

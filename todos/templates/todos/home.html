@@ -105,13 +105,13 @@
             <a class="left btn-floating btn-large cyan" href="{% url 'todos:edit' todo_id=todo.id %}" style="margin-right: 10px">
             <i class="large material-icons">edit</i>
           </a>
-          <form action="{% url 'todos:complete' todo_id=todo.id %}" method="post" style="margin-right: 10px">
+          <form action="{% url 'todos:complete' todo_id=todo.id %}" method="post" style="margin-right: 300px">
               {% csrf_token %}
               <button type="submit" class="left btn-floating btn-large green red">
                 <i class="large material-icons">done</i>
               </button>
           </form>
-          <form action="{% url 'todos:delete' todo_id=todo.id %}" method="post" style="margin-left: 70%">
+          <form action="{% url 'todos:delete' todo_id=todo.id %}" method="post">
               {% csrf_token %}
               <button type="submit" class="right btn-floating btn-large red">
                 <i class="large material-icons">delete</i>
