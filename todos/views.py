@@ -16,7 +16,7 @@ def home(request):
         pending_todos = Todo.objects.filter(is_completed=False,
                                             is_active=True,
                                             assigned_to__domain=profile.domain)
-        pending_count = len(pending_todos)
+        pending_count = pending_todos.count()
         completed_count = Todo.objects.filter(is_completed=True,
                                               is_active=True,
                                               assigned_to__domain=profile.domain).count()
