@@ -7,6 +7,7 @@ from django.contrib.auth import (
 )
 from accounts.models import Profile
 from accounts.utils import send_email
+from accounts.decorators import only_admin
 
 
 def registration(request):
@@ -42,6 +43,7 @@ def logout(request):
     return redirect(reverse('todos:home'))
 
 
+@only_admin
 def approve_account(request, user_id):
     if request.method == 'POST':
         profile = get_object_or_404(Profile, pk=user_id)

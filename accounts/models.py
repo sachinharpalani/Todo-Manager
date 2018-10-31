@@ -12,5 +12,5 @@ class Profile(models.Model):
     is_approved = models.BooleanField(default=False)
     domain = models.ForeignKey(Domain, on_delete=models.PROTECT)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.user.username
