@@ -87,3 +87,5 @@ Quit the server with CONTROL-C.
 
 Now go to `http://localhost:8000` and register and start using the application
 
+In a seperate tab, run the following command `celery -A TodoManager worker -l info` . This will let you view celery information. (Used to verify send_email. In Debug=True mode, the email should be printed on this console and in prod mode you should see email debug information)
+
